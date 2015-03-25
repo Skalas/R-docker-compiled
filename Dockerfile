@@ -24,6 +24,20 @@ git \
 curl\
 && apt-get build-dep -y r-base
 ADD http://cran.r-project.org/src/base/R-latest.tar.gz R-latest.tar.gz 
-RUN mkdir -p /usr/src/R \
-&& tar -xzvf R-latest.tar.gz -C /usr/src/R \
-&& "$(ls -dt /usr/src/R/R-*/ | head -1 )"/configure --enable-memory-profiling --enable-R-shlib --with-blas --with-lapack --with-system-zlib --with-system-bzlib --with-system-xz --with-tcltk  --with-cairo --with-libpng --with-jpeglib --with-libtiff && make -C "$(ls -dt /usr/src/R/R-*/ | head -1 ) " && make install -C "$(ls -dt /usr/src/R/R-*/ | head -1 )"
+RUN tar -xzvf R-latest.tar.gz -C /usr/src/ \
+&& "$(ls -dt /usr/src/R-*/ | head -1 )"/configure \
+--enable-memory-profiling \
+--enable-R-shlib \
+--with-blas \
+--with-lapack \
+--with-system-zlib \
+--with-system-bzlib \
+--with-system-xz \
+--with-tcltk  \
+--with-cairo \
+--with-libpng \
+--with-jpeglib \
+--with-libtiff  \
+--prefix="$(ls -dt /usr/src/R-*/ | head -1 ) " \
+&& make -C "$(ls -dt /usr/src/R-*/ | head -1 ) " \
+&& make install -C "$(ls -dt /usr/src/R-*/ | head -1 )"
