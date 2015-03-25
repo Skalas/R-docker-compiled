@@ -25,7 +25,8 @@ curl\
 && apt-get build-dep -y r-base
 ADD http://cran.r-project.org/src/base/R-latest.tar.gz R-latest.tar.gz 
 RUN tar -xzvf R-latest.tar.gz -C /usr/src/ \
-&& "$(ls -dt /usr/src/R-*/ | head -1 )"/configure \
+&& cd "$(ls -dt /usr/src/R-*/ | head -1 ) " \
+&& ./configure \
 --enable-memory-profiling \
 --enable-R-shlib \
 --with-blas \
@@ -38,6 +39,6 @@ RUN tar -xzvf R-latest.tar.gz -C /usr/src/ \
 --with-libpng \
 --with-jpeglib \
 --with-libtiff  \
---prefix="$(ls -dt /usr/src/R-*/ | head -1 ) " \
-&& make -C "$(ls -dt /usr/src/R-*/ | head -1 ) " \
-&& make install -C "$(ls -dt /usr/src/R-*/ | head -1 )"
+&& make  \
+&& make install \
+&& cd -
