@@ -25,7 +25,7 @@ curl\
 && apt-get build-dep -y r-base
 ADD http://cran.r-project.org/src/base/R-latest.tar.gz R-latest.tar.gz 
 RUN tar -xzvf R-latest.tar.gz -C /usr/src/ \
-&& cd "$(ls -dt /usr/src/R-*/ | head -1 ) " \
+&& direct=$(ls -dt /usr/src/R-*/ | head -1 ) cd $direct 
 && ./configure \
 --enable-memory-profiling \
 --enable-R-shlib \
