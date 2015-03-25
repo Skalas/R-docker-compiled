@@ -23,7 +23,7 @@ wget \
 git \
 curl\
 && apt-get build-dep -y r-base
+ADD http://cran.r-project.org/src/base/R-latest.tar.gz R-latest.tar.gz 
 RUN mkdir -p /usr/src/R \
-&& wget -cq http://cran.r-project.org/src/base/R-latest.tar.gz |\
- tar -JC /usr/src/R \
-&& ./configure --enable-memory-profiling --enable-R-shlib --with-blas --with-lapack --with-system-zlib --with-system-bzlib --with-system-xz --with-tcltk  --with-cairo --with-libpng --with-jpeglib --with-libtiff && make -C /usr/src/R && make install 
+&& tar -xzvf R-latest.tar.gz -C /usr/src/R \
+&& "$(ls -dt /usr/src/R/R-*/ | head -1 )"/configure --enable-memory-profiling --enable-R-shlib --with-blas --with-lapack --with-system-zlib --with-system-bzlib --with-system-xz --with-tcltk  --with-cairo --with-libpng --with-jpeglib --with-libtiff && make -C "$(ls -dt /usr/src/R/R-*/ | head -1 )" && make install -C "$(ls -dt /usr/src/R/R-*/ | head -1 )" 
