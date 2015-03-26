@@ -27,7 +27,27 @@ wget \
 git \
 curl \
 libcurl4-openssl-dev \
-&& apt-get build-dep -y r-base
+&& apt-get build-dep -y r-base 
+
+wget -c http://cran.r-project.org/src/base/R-latest.tar.gz \
+&& tar -xzvf R-latest.tar.gz -C /usr/src/ \
+&& direct=$(ls -dt /usr/src/R-*/ | head -1 ) cd $direct \
+&& ./configure \
+--enable-memory-profiling \
+--enable-R-shlib \
+--with-blas \
+--with-lapack \
+--with-system-zlib \
+--with-system-bzlib \
+--with-system-xz \
+--with-tcltk  \
+--with-cairo \
+--with-libpng \
+--with-jpeglib \
+--with-libtiff  \
+&& make  \
+&& make install
+
 SCRIPT
 
 
