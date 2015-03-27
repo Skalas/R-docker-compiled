@@ -24,7 +24,7 @@ wget \
 git \
 curl\
 && apt-get build-dep -y r-base \
-&& wget --no-verbose http://cran.r-project.org/src/base/R-latest.tar.gz /tmp/R-latest.tar.gz
+&& wget --no-verbose http://cran.r-project.org/src/base/R-latest.tar.gz -O /tmp/R-latest.tar.gz
 && tar -xzvf /tmp/R-latest.tar.gz -C /tmp/ \
 && cd $(ls -dt /tmp/R-*/ | head -1 ) \
 && ./configure \
