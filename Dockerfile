@@ -14,7 +14,7 @@ gnuplot-x11 \
 gfortran \
 texinfo \
 liblapack-dev \
-\liblapack3gf \
+liblapack3gf \
 texi2html \
 libglpk-dev \
 libgeos-dev \
