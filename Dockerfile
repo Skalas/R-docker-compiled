@@ -43,3 +43,4 @@ curl\
 && make \
 && make install \
 && rm -rf /tmp/*
+CMD ["R"]
