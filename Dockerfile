@@ -1,4 +1,3 @@
-# This is a comment
 FROM ubuntu:14.04
 MAINTAINER Miguel Escalante <miguel@opi.la>
 
